@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+{{parent()}}
+ <!-- Main navigation container -->
+<div
+  class="block rounded-lg bg-green-80 p-6 text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
+<h5 class="mb-2 text-xl font-medium leading-tight py-8 text-center flex justify-center items-end h-32 bg-green-80">
+<u>LISTE DES ARTICLES</u></h5>
+
+
+  <div class="d-flex justify-content-end"style="margin-left:1000px;margin-top:5px">
+
+
+  <button
+  type="button"
+  class="inline-block rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
+  CREATE
+</button>
+
+  
+  </div>
+
+  <div class="overflow-x-auto sm:-mx-auto lg:-mx-auto mt-5">
+    <div class="inline-block min-w-full py-8 sm:px-6 lg:px-6">
+      <div class="overflow-hidden">
+        <table
+          class="min-w-full border  border-neutral-200 text-center text-sm font-light text-surface dark:border-white/10 dark:text-white">
+          <thead
+            class="border-b border-neutral-200 font-medium dark:border-white/10">
+            <tr>
+              <th
+                scope="col"
+                class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                #
+              </th>
+              <th
+                scope="col"
+                class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                Reference
+              </th>
+              <th
+                scope="col"
+                class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                Libelle
+              </th>
+
+               <th
+                scope="col"
+                class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                Qte Stock
+              </th>
+              <th
+                scope="col"
+                class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                Prix
+              </th>
+              <th
+                scope="col"
+                class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-neutral-200 dark:border-white/10">
+              <td
+                class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10">
+                1
+              </td>
+              <td
+                class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                Mark
+              </td>
+              <td
+                class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                Otto
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 border-e border-neutral-200 px-6 py-4 dark:border-white/10">@</td>
+              <td class="whitespace-nowrap px-6 py-4 border-e border-neutral-200 px-6 py-4 dark:border-white/10">@</td>
+               <td class="whitespace-nowrap px-6 py-4 border-e border-neutral-200 px-6 py-4 dark:border-white/10">
+                  
+                            <button type="button"class="inline-block rounded bg-neutral-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">Details
+                           </button>
+
+                           <button type="button" class="inline-block rounded-full bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-danger-3 transition duration-150 ease-in-out hover:bg-danger-accent-300 hover:shadow-danger-2 focus:bg-danger-accent-300 focus:shadow-danger-2 focus:outline-none focus:ring-0 active:bg-danger-600 active:shadow-danger-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
+Delete
+</button>
+  </td>
+</tr>
+           
+            
+</tbody>
+  </table>
+  <div style="margin-top:10px;margin-left:900px;border:2px solid">
+      <nav aria-label="Page navigation example">
+  <ul class="list-style-none flex">
+    <li>
+      <a
+        class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
+        href="#"
+        aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li>
+      <a
+        class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
+        href="#"
+        >1</a
+      >
+    </li>
+    <li aria-current="page">
+      <a
+        class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
+        href="#"
+        >2</a
+      >
+    </li>
+    <li>
+      <a
+        class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
+        href="#"
+        >3</a
+      >
+    </li>
+    <li>
+      <a
+        class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
+        href="#"
+        aria-label="Next"
+        ><span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% block footer %}
+{% endblock%}
+{% endblock %}
+
+
+
+
