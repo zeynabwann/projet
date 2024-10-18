@@ -74,23 +74,19 @@ class Dette
     {
         return $this->updateAt;
     }
-
     public function setUpdateAt(\DateTimeImmutable $updtateAt): static
     {
         $this->updtateAt = $updateAt;
 
         return $this;
     }
-
     public function getClient(): ?Client
     {
         return $this->client;
     }
-
     public function setClient(?Client $client): static
     {
         $this->client = $client;
-
         return $this;
     }
 }

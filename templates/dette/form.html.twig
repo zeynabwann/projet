@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+{{parent()}}
+<h2></h2>
+ 
+
+<div
+  class="block rounded-lg bg-gray-200 text-center text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white"style="width:300px;margin-left:420px;margin-top:25px">
+  <div
+    class="border-b-2 border-neutral-100 px-6 py-3 dark:border-white/10">
+    Formulaire d'ajout dette
+  </div>
+  <div class="p-6">
+  {{ form_start(formDette) }}
+{{ form_widget(formDette) }}
+{{ form_end(formDette) }}
+  </div> 
+</div>
+    
+
+
+  
+  
+{% block footer %}
+{% endblock%}
+{% endblock %}
+
+
+
+

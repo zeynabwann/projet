@@ -19,17 +19,15 @@ class DetteRepository extends ServiceEntityRepository
     //    /**
     //     * @return Dette[] Returns an array of Dette objects
     //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('d')
-    //            ->andWhere('d.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('d.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+       public function findByTypeDette($d): array
+       {
+           return $this->createQueryBuilder('d')
+               ->setParameter('val', $value)
+               ->orderBy('d.id', 'ASC')
+               ->setMaxResults(10)
+               
+           ;
+       }
 
     //    public function findOneBySomeField($value): ?Dette
     //    {

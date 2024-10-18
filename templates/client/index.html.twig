@@ -8,7 +8,6 @@
     <h5 class="mb-2 text-xl font-medium leading-tight py-8 text-center flex justify-center items-end h-32 bg-green-80">
         <u>LISTE DES CLIENTS</u>
     </h5>
-
     <div class="d-flex justify-content-end" style="display:flex">
         <div class="relative flex" style="margin-top:15px;margin-left:22px">
             <input
@@ -70,8 +69,7 @@
 
 
                             </td>
-                            <td>
-                                                            
+                            <td>                        
                                    {% if client.users  %}
 
                                   {{ client.user.telephone }}
@@ -83,7 +81,11 @@
                                   {{ client.users.addresse }}
                               {% endif %}
 
-
+                            </td>
+                            <td>
+                               
+                            
+                            
                             </td>
                             
                         </tr>

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetteController!{% endblock %}
+
+{% block body %}
+{{ parent() }}
+  <div>
+  
+    <h1>Liste des Dettes</h1>
+     <button type="button" style="margin-left:630px;height:35px;margin-top:25px"
+            class="inline-block rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
+            <a href="{{ path('dette.ajoutDette') }}">Ajouter</a>
+        </button>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Montant de la dette</th>
+        <th>SommeMontantVerser</th>
+
+       
+    </tr>
+    {% for dette in dette %}
+    <tr>
+        <td>{{ dette.id }}</td>
+        <td>{{ dette.montant }}</td>
+        <td>{{ dette.somme }}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+
+{% endblock %}
