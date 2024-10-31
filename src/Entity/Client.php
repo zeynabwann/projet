@@ -1,8 +1,5 @@
 <?php
-
 namespace App\Entity;
-
-
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,7 +20,7 @@ class Client
     private ?string $surname = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $addresse = null;
+    private ?string $adresse = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createAt = null;
@@ -44,12 +41,10 @@ class Client
     {
         $this->dettes = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getTelephone(): ?string
     {
         return $this->telephone;
@@ -74,14 +69,14 @@ class Client
         return $this;
     }
 
-    public function getAddresse(): ?string
+    public function getAdresse(): ?string
     {
-        return $this->addresse;
+        return $this->adresse;
     }
 
-    public function setAddresse(string $addresse): static
+    public function setAdresse(string $adresse): static
     {
-        $this->addresse = $addresse;
+        $this->adresse = $adresse;
 
         return $this;
     }
