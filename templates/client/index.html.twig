@@ -1,129 +1,70 @@
 {% extends 'base.html.twig' %}
+{% block title %}Liste des Clients{% endblock %}
 
-{% block title %}Hello ClientController!{% endblock %}
 {% block body %}
-{{ parent() }}
-<!-- Main navigation container -->
-<div class="block rounded-lg bg-green-80 p-6 text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
-    <h5 class="mb-2 text-xl font-medium leading-tight py-8 text-center flex justify-center items-end h-32 bg-green-80">
-        <u>LISTE DES CLIENTS</u>
-    </h5>
-    <div class="d-flex justify-content-end" style="display:flex">
-        <div class="relative flex" style="margin-top:15px;margin-left:22px">
-            <input
-                type="search"
-                class="relative m-0 -me-0.5 block flex-auto rounded-s border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
-                placeholder="telephone"
-                aria-label="Search"
-                id="exampleFormControlInput3"
-                aria-describedby="button-addon3" />
-            <button
-                class="z-[2] inline-block rounded-e border-2 border-gray-600 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-primary transition duration-150 ease-in-out hover:border-primary-accent-300 hover:bg-primary-50/50 hover:text-primary-accent-300 focus:border-primary-600 focus:bg-primary-50/50 focus:text-primary-600 focus:outline-none focus:ring-0 active:border-primary-700 active:text-primary-700 dark:text-primary-500 dark:hover:bg-blue-950 dark:focus:bg-blue-950"
-                data-twe-ripple-init
-                data-twe-ripple-color="white"
-                type="button"
-                id="button-addon3">
-                Search
-            </button>
+    <div class="container mt-5">
+        <h1 class="mb-4">Liste des Clients</h1>
+
+        <!-- Bouton "Créer un client" -->
+        <div class="mb-3">
+            <a href="{{ path('client_add') }}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Créer un Client
+            </a>
         </div>
 
-        <button type="button" style="margin-left:630px;height:35px;margin-top:25px"
-            class="inline-block rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
-            <a href="{{ path('clients.store') }}">CREATE</a>
-        </button>
-    </div>
-
-    <div class="overflow-x-auto sm:-mx-auto lg:-mx-auto mt-6">
-        <div class="inline-block min-w-full py-8 sm:px-6 lg:px-6">
-            <div class="overflow-hidden">
-                <table class="min-w-full border border-neutral-200 text-center text-sm font-light text-surface dark:border-white/10 dark:text-white">
-                    <thead class="border-b border-neutral-200 font-medium dark:border-white/10">
-                        <tr>
-                            <th scope="col" class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">#</th>
-                            <th scope="col" class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">Nom</th>
-                            <th scope="col" class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">Prenom</th>
-                            <th scope="col" class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">Surname</th>
-                            <th scope="col" class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">Telephone</th>
-                            <th scope="col" class="border-e border-neutral-200 px-6 py-4 dark:border-white/10">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for client in datas %}
-                        <tr class="border-b border-neutral-200 dark:border-white/10">
-                            <td>
-                                {% if client.users %}
-                            {{client.users.nom }}
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if client.users  %}
-                                  {{ client.users.prenom }}
-                                {% endif %}
-
-                            </td>
-                            <td>
-                              {% if client.users   %}
-
-                                  {{ client.users.surname }}
-                              {% endif %}
-
-
-                            </td>
-                            <td>                        
-                                   {% if client.users  %}
-
-                                  {{ client.user.telephone }}
-                                 {% endif %}
-                            </td>
-                             <td>
-                              {% if client.users  %}
-
-                                  {{ client.users.addresse }}
-                              {% endif %}
-
-                            </td>
-                            <td>
-                               
-                            
-                            
-                            </td>
-                            
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
-                <div style="margin-top:10px;margin-left:900px;border:2px solid">
-                    <nav aria-label="Page navigation example">
-                        <ul class="list-style-none flex">
-                            <li>
-                                <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
-                                    href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
-                                    href="#">1</a></li>
-                            <li aria-current="page">
-                                <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
-                                    href="#">2</a>
-                            </li>
-                            <li><a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
-                                    href="#">3</a></li>
-                            <li>
-                                <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
-                                    href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+        <!-- Formulaire de recherche -->
+        <form method="get" action="{{ path('client_index') }}" class="mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_start(searchForm) }}
+                        <div class="input-group">
+                            {{ form_widget(searchForm.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher par téléphone'}}) }}
+                            <button type="submit" class="btn btn-primary">Rechercher</button>
+                        </div>
+                    {{ form_end(searchForm) }}
                 </div>
             </div>
+        </form>
+
+        <!-- Liste des clients -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.prenom }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>{{ client.telephone }}</td>
+                        <td>
+                            <a href="{{ path('client_delete', {id: client.id}) }}" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Voulez-vous vraiment supprimer ce client ?');">
+                                Supprimer
+                            </a>
+                            <a href="{{ path('client_dettes', {id: client.id}) }}" class="btn btn-info btn-sm">Voir Dettes</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">Aucun client trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {{ knp_pagination_render(clients) }}
         </div>
     </div>
-</div>
-
-{% block footer %}
-{% endblock %}
 {% endblock %}

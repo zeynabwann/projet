@@ -1,11 +1,15 @@
 <?php
+
 namespace App\Entity;
+
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
+#[ORM\Table(name: "client")]
 class Client
 {
     #[ORM\Id]
@@ -13,119 +17,107 @@ class Client
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 200, nullable: true)]
+    #[Assert\NotBlank(message: "Le nom ne peut pas être vide.")]
+    #[Assert\Length(
+        min: 2,
+        max: 200,
+        minMessage: "Le nom doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "Le nom ne peut pas dépasser {{ limit }} caractères."
+    )]
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 25, nullable: true)]
+    #[Assert\NotBlank(message: "Le prénom ne peut pas être vide.")]
+    #[Assert\Length(
+        min: 2,
+        max: 25,
+        minMessage: "Le prénom doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "Le prénom ne peut pas dépasser {{ limit }} caractères."
+    )]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 25, nullable: true)]
+    #[Assert\NotBlank(message: "L'email ne peut pas être vide.")]
+    #[Assert\Email(message: "L'email '{{ value }}' n'est pas un email valide.")]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    #[Assert\NotBlank(message: "Le numéro de téléphone ne peut pas être vide.")]
+    #[Assert\Regex(
+        pattern: "/^\+?[0-9]*$/",
+        message: "Le numéro de téléphone doit contenir uniquement des chiffres."
+    )]
     private ?string $telephone = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $surname = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $adresse = null;
-
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createAt = null;
-
-    #[ORM\Column]
-    private ?\DateTimeImmutable $updateAt = null;
-
-    #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'])]
-    private ?User $users = null;
-
-    /**
-     * @var Collection<int, Dette>
-     */
-    #[ORM\OneToMany(targetEntity: Dette::class, mappedBy: 'client', orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Dette::class, cascade: ['persist', 'remove'])]
     private Collection $dettes;
 
     public function __construct()
     {
         $this->dettes = new ArrayCollection();
     }
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(?string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(?string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
     public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(string $telephone): static
+    public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
 
         return $this;
     }
+ 
 
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    public function setSurname(string $surname): static
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): static
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getCreateAt(): ?\DateTimeImmutable
-    {
-        return $this->createAt;
-    }
-
-    public function setCreateAt(\DateTimeImmutable $createAt): static
-    {
-        $this->createAt = $createAt;
-
-        return $this;
-    }
-
-    public function getUpdateAt(): ?\DateTimeImmutable
-    {
-        return $this->updateAt;
-    }
-
-    public function setUpdateAt(\DateTimeImmutable $updateAt): static
-    {
-        $this->updateAt = $updateAt;
-
-        return $this;
-    }
-
-    public function getUsers(): ?User
-    {
-        return $this->users;
-    }
-
-    public function setUsers(?User $users): static
-    {
-        $this->users = $users;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Dette>
-     */
     public function getDettes(): Collection
     {
         return $this->dettes;
     }
 
-    public function addDette(Dette $dette): static
+    public function addDette(Dette $dette): self
     {
         if (!$this->dettes->contains($dette)) {
             $this->dettes->add($dette);
@@ -135,10 +127,10 @@ class Client
         return $this;
     }
 
-    public function removeDette(Dette $dette): static
+    public function removeDette(Dette $dette): self
     {
         if ($this->dettes->removeElement($dette)) {
-            // set the owning side to null (unless already changed)
+            // Set the owning side to null (unless already changed)
             if ($dette->getClient() === $this) {
                 $dette->setClient(null);
             }
